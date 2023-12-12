@@ -1,8 +1,37 @@
 import styled from 'styled-components';
+import { useGlobalContext } from '../context/Glodal';
+import { Link } from 'react-router-dom';
+
+interface video {
+    _id: string,
+    title: string,
+    description: string,
+    videoUrl: string,
+    filename: string,
+    createdAt: string,
+    updatedAt: string
+}
 
 const Videos = () => {
+
+    const { videos } = useGlobalContext()
+
+    console.log(videos)
+
     return (
-        <VideosStyled><h1>Videos</h1></VideosStyled>
+        <VideosStyled>
+            <div className="videos-container">
+                {videos.map((video: video) => {
+                    return <Link key={video._id} to={`/videos/${video._id}`}>
+                        <div className="video">
+                            <video src={video.videoUrl}></video>
+                            <h4>{video.title}</h4>
+                            <p>{video.description}</p>
+                        </div>
+                    </Link>
+                })}
+            </div>
+        </VideosStyled>
     )
 }
 

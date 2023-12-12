@@ -1,16 +1,14 @@
+import { BrowserRouter } from "react-router-dom"
 import Videos from "./components/Videos"
-import { useGlobalContext } from "./context/Glodal"
 
 function App() {
 
-  const {videos} = useGlobalContext()
-
-  console.log(videos)
-
   return (
-    <div className="App">
-      <Videos />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Videos />
+      </div>
+    </BrowserRouter>
   )
 }
 

@@ -1,6 +1,16 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 
-const GlobalContext = createContext(null);
+interface video {
+    _id: string,
+    title: string,
+    description: string,
+    videoUrl: string,
+    filename: string,
+    createdAt: string,
+    updatedAt: string
+}
+
+const GlobalContext = createContext();
 
 //actions
 const LOADING = 'LOADING'
@@ -16,10 +26,10 @@ const reducer = (state, action) => {
                 ...state,
                 loading: false,
                 videos: [
-                    ...action.payload.map((video) => {
+                    ...action.payload.map((video: video) => {
                         return {
                             ...video,
-                            videoUrl: `http://localhost:8000/public/videos/${video.filename}`
+                            videoUrl: `http://localhost:8800/public/videos/${video.filename}`
                         }
                     })
                 ]
