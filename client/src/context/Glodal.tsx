@@ -10,6 +10,7 @@ interface video {
     updatedAt: string
 }
 
+// @ts-ignore
 const GlobalContext = createContext();
 
 //actions
@@ -17,6 +18,7 @@ const LOADING = 'LOADING'
 const SET_VIDEOS = 'SET_VIDEOS'
 const SET_SELECTED_VIDEO = 'SET_SELECTED_VIDEO'
 
+// @ts-ignore
 const reducer = (state, action) => {
     switch (action.type) {
         case LOADING:
@@ -66,7 +68,7 @@ export const GLobalProvider = ({ children }: any) => {
     }, [])
 
     return (
-        <GlobalContext.Provider value={{...state}}>
+        <GlobalContext.Provider value={{...state, getAllVideos}}>
             {children}
         </GlobalContext.Provider>
     )

@@ -14,6 +14,7 @@ interface video {
 
 const Videos = () => {
 
+    // @ts-ignore
     const { videos } = useGlobalContext()
 
     console.log(videos)
